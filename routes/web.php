@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () use ($router) {
-    return $router->app->version();
-});
+Route::get('/', 'DashboardController@index');
 
 Route::group([
     'namespace' => 'Api\V1',
