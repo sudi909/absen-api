@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Absen;
-use App\Models\Device;
-use App\Models\Mahasiswa\MahasiswaList;
+use App\Models\Attendance;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,38 +13,43 @@ class AbsenApiController extends Controller
     public function tapIn(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nim' => 'required|exists:mahasiswa_lists,nim',
+            'id' => 'required|exists:internal_identifiers,identifier',
+            'location' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => true, 'message' => $validator->errors()->first()], 401);
         }
 
-        try {
-            $device = Device::whereToken($request->token)->firstOrFail();
-        } catch (\Exception $e) {
-            return response()->json(['errors' => true, 'message' => $e->getMessage()], 401);
-        }
-
-        $device->update([
-            'last_ip' => $request->ip()
-        ]);
-
-        try {
-            $mahasiswa = MahasiswaList::whereNim($request->nim)
-                ->whereHas('cards', function ($query) use ($request) {
-                    $query->whereCardCode($request->card_code);
-                })->firstOrFail();
-        } catch (\Exception $e) {
-            return response()->json(['errors' => true, 'message' => "Card Not Registered!"], 401);
-        }
-
-        $absen = [
-            'nim' => $request->nim,
-            'classroom_code' => $device->classroom_code,
+        $att = [
+            'identifier' => $request->id,
+            'location' => $request->location,
         ];
 
-        Absen::create($absen);
+        $date = Carbon::now()->format('Y-m-d');
+        $latestRecord = Attendance::where('identifier', 1903028)
+            ->whereDate('created_at', $date)
+            ->latest()
+            ->first();
+
+        if ($latestRecord instanceof Attendance) {
+            if ($latestRecord->type == "IN") {
+                $att['type'] = 'OUT';
+            } else {
+                $att['type'] = 'IN';
+            }
+        } else {
+            $att['type'] = 'IN';
+        }
+
+        try {
+            Attendance::create($att);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'errors' => true,
+                'message' => $exception->getMessage(),
+            ], 500);
+        }
 
         return response()->json(['errors' => false, 'message' => 'ok']);
 
