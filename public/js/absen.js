@@ -32,6 +32,7 @@ $(window).on("load", function () {
     qs("#result-checkin").style.display = 'none';
 
     let $form = qs('#attForm');
+    qs('#id').focus();
 
     $form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -54,6 +55,9 @@ $(window).on("load", function () {
                 }
                 qs("#result-checkin").style.display = '';
                 qs("#result-checkin").innerHTML = data.message;
+
+                qs('#id').value = '';
+                qs('#id').focus();
 
                 setInterval(function () {
                     qs("#result-checkin").style.display = 'none';
