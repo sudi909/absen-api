@@ -5,7 +5,18 @@
 <script src="js/common_functions.js"></script>
 
 <!-- Wizard script-->
-<script src="js/func_1.js"></script>
+<script type="text/javascript">
+    var timestamp = '<?php time();?>';
+
+    function updateTime() {
+        $('#time').html(Date('timestamp'));
+        timestamp++;
+    }
+
+    $(function () {
+        setInterval(updateTime, 1000);
+    });
+</script>
 
 <!-- System -->
 <script src="js/absen.js"></script>
