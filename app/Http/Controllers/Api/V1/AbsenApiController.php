@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\Identifier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -15,6 +16,9 @@ class AbsenApiController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:internal_identifiers,identifier',
             'location' => 'required',
+        ], [
+            'id.exists' => 'NIM / NIP anda tidak terdaftar',
+            'location.required' => 'Lokasi anda tidak diketahui',
         ]);
 
         if ($validator->fails()) {
@@ -51,7 +55,14 @@ class AbsenApiController extends Controller
             ], 500);
         }
 
-        return response()->json(['errors' => false, 'message' => 'ok']);
+        $attendee = Identifier::where('identifier', $request->id)->first();
+        if ($att['type'] == "IN") {
+            $message = "Selamat Datang, " . $attendee->name;
+        } else {
+            $message = "Sampai Jumpa Lagi, " . $attendee->name;
+        }
+
+        return response()->json(['errors' => false, 'message' => $message]);
 
     }
 }

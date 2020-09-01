@@ -1,5 +1,5 @@
 let $storageEnabled = false;
-if (typeof(Storage) !== "undefined") {
+if (typeof (Storage) !== "undefined") {
     $storageEnabled = true;
 }
 
@@ -9,14 +9,59 @@ function qs(selector) {
     return document.querySelector(selector);
 }
 
-$(window).on("load", function(){
-    let $location = localStorage.getItem("location");
+function toJSONString(form) {
+    var obj = {};
+    var elements = form.querySelectorAll("input, select, textarea");
+    for (var i = 0; i < elements.length; ++i) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
+
+        if (name) {
+            obj[name] = value;
+        }
+    }
+
+    return JSON.stringify(obj);
+}
+
+$(window).on("load", function () {
+    qs('#location').value = localStorage.getItem("location");
+
+    // hide result
+    qs("#result-checkin").style.display = 'none';
+
     let $form = qs('#attForm');
 
-    $form.addEventListener('submit', (e) => {
+    $form.addEventListener('submit', function (e) {
         e.preventDefault();
-        console.log('test');
-        // var data = $form.serializeArray();
-        // console.log(data);
+        var dataToSend = toJSONString(this);
+
+        let dataReceived = "";
+        fetch("/absen", {
+            method: "post",
+            headers: {"Content-Type": "application/json"},
+            body: dataToSend
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                if (data.errors) {
+                    qs("#result-checkin").style.color = 'red';
+                } else {
+                    qs("#result-checkin").style.color = 'green';
+                }
+                qs("#result-checkin").style.display = '';
+                qs("#result-checkin").innerHTML = data.message;
+
+                setInterval(function () {
+                    qs("#result-checkin").style.display = 'none';
+                    qs("#result-checkin").innerHTML = '';
+                    qs("#result-checkin").style.color = 'black';
+                }, 5000);
+            });
+
+
     });
 });
