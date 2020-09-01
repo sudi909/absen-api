@@ -4,13 +4,13 @@
 @include('header')
 
 <body>
-<div id="preloader">
-    <div data-loader="circle-side"></div>
-</div><!-- /Preload -->
+{{--<div id="preloader">--}}
+{{--    <div data-loader="circle-side"></div>--}}
+{{--</div><!-- /Preload -->--}}
 
-<div id="loader_form">
-    <div data-loader="circle-side-2"></div>
-</div><!-- /loader_form -->
+{{--<div id="loader_form">--}}
+{{--    <div data-loader="circle-side-2"></div>--}}
+{{--</div><!-- /loader_form -->--}}
 
 <header>
     <div class="container">
@@ -41,17 +41,13 @@
             </div>
             <div class="col-lg-8">
                 <div id="wizard_container">
-                    <div id="top-wizard">
-                        <div id="progressbar"></div>
-                        <span id="location"></span>
-                    </div>
                     <!-- /top-wizard -->
                     <form id="wrapped" method="post">
                         <input id="website" name="website" type="text" value="">
                         <!-- Leave for security protection, read docs for details -->
                         <div id="middle-wizard">
 
-                            <div class="submit step" id="end">
+                            <div>
                                 <div class="summary">
                                     <p id="time"></p>
                                     <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan Lokasi
@@ -101,7 +97,6 @@
 <!-- COMMON SCRIPTS -->
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/common_scripts.min.js"></script>
-<script src="js/velocity.min.js"></script>
 <script src="js/common_functions.js"></script>
 
 <!-- Wizard script-->
