@@ -33,9 +33,10 @@
                 <div id="left_form">
                     <figure><img src="img/logoyv.png" alt="" width="100" height="100"></figure>
                     <h2>YAYASAN VITKA <span>Contact Tracing</span></h2>
-                    <p><i>“To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cheerfulness, and
+                    <p><i>“To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cheerfulness,
+                            and
                             maintain an interest in life.” -William Londen.</i></p>
-                    <a href="/visitor" class="btn_1 rounded yellow purchase" target="_parent">Input Visitor</a>
+                    <a href="/" class="btn_1 rounded yellow purchase" target="_parent">Input Civitas</a>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -45,7 +46,7 @@
                         <span id="location"></span>
                     </div>
                     <!-- /top-wizard -->
-                    <form id="attForm" method="post">
+                    <form id="wrapped" method="post">
                         <input id="website" name="website" type="text" value="">
                         <!-- Leave for security protection, read docs for details -->
                         <div id="middle-wizard">
@@ -53,10 +54,22 @@
                             <div class="submit step" id="end">
                                 <div class="summary">
                                     <p id="time"></p>
-                                    <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan NIM / NIP
-                                        Anda</h3>
+                                    <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan Data Anda
+                                    </h3>
                                     <div class="form-group add_top_30">
-                                        <label for="name">NIM / NIP</label>
+                                        <label for="name">Nama</label>
+                                        <input type="text" name="name" id="name" class="form-control required">
+                                    </div>
+                                    <div class="form-group add_top_30">
+                                        <label for="name">No HP</label>
+                                        <input type="text" name="name" id="name" class="form-control required">
+                                    </div>
+                                    <div class="form-group add_top_30">
+                                        <label for="name">Alamat</label>
+                                        <input type="text" name="name" id="name" class="form-control required">
+                                    </div>
+                                    <div class="form-group add_top_30">
+                                        <label for="name">Keperluan</label>
                                         <input type="text" name="name" id="name" class="form-control required">
                                     </div>
 
@@ -97,8 +110,24 @@
     <span></span>
 </div>
 <!-- /cd-overlay-content -->
+<!-- COMMON SCRIPTS -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/common_scripts.min.js"></script>
+<script src="js/velocity.min.js"></script>
+<script src="js/common_functions.js"></script>
 
-@include('footer')
+<!-- Wizard script-->
+<script type="text/javascript">
+    var timestamp = '<?php time();?>';
 
+    function updateTime() {
+        $('#time').html(Date('timestamp'));
+        timestamp++;
+    }
+
+    $(function () {
+        setInterval(updateTime, 1000);
+    });
+</script>
 </body>
 </html>

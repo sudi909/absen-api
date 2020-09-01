@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'DashboardController@index');
+Route::get('/settings', 'SettingController@index');
+Route::get('/visitor', 'VisitorController@index');
 
 Route::group([
     'namespace' => 'Api\V1',
