@@ -41,19 +41,19 @@
             <div class="col-lg-8">
                 <div id="wizard_container">
                     <!-- /top-wizard -->
-                    <form id="wrapped" method="post">
-                        <input id="website" name="website" type="text" value="">
+                    <form id="attForm" method="post">
                         <!-- Leave for security protection, read docs for details -->
                         <div id="middle-wizard">
 
                             <div>
                                 <div class="summary">
                                     <p id="time"></p>
-                                    <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan NIM / NIP
-                                        Anda</h3>
+                                    <h3 class="main_question" id="result-checkin"></h3>
+                                    <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan NIM / NIP Anda</h3>
                                     <div class="form-group add_top">
                                         <label for="name">NIM / NIP</label>
-                                        <input type="text" name="name" id="name" class="form-control required">
+                                        <input type="text" name="id" id="id" class="form-control required">
+                                        <input type="hidden" name="location" id="location">
                                     </div>
 
                                     <div class="text-center">
@@ -93,24 +93,8 @@
     <span></span>
 </div>
 <!-- /cd-overlay-content -->
-<!-- COMMON SCRIPTS -->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/common_scripts.min.js"></script>
-<script src="js/velocity.min.js"></script>
-<script src="js/common_functions.js"></script>
 
-<!-- Wizard script-->
-<script type="text/javascript">
-    var timestamp = '<?php time();?>';
+@include('footer')
 
-    function updateTime() {
-        $('#time').html(Date('timestamp'));
-        timestamp++;
-    }
-
-    $(function () {
-        setInterval(updateTime, 1000);
-    });
-</script>
 </body>
 </html>
