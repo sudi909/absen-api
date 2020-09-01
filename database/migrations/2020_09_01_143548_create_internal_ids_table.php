@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMahasiswaListsTable extends Migration
+class CreateInternalIdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateMahasiswaListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mahasiswa_lists', function (Blueprint $table) {
+        Schema::create('internal_identifiers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nim')->unique()->index();
+            $table->string('identifier')->unique()->index();
             $table->string('name');
-            $table->string('prodi_name');
-            $table->string('uni');
+            $table->string('unit');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateMahasiswaListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mahasiswa_lists');
+        Schema::dropIfExists('internal_identifiers');
     }
 }

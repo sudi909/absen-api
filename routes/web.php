@@ -11,17 +11,11 @@
 |
 */
 
-Route::get('/', function () use ($router) {
-    return $router->app->version();
-});
+Route::get('/', 'DashboardController@index');
 
 Route::group([
     'namespace' => 'Api\V1',
 ], function() {
     Route::post('register', 'DeviceController@registerDevice');
-    Route::group([
-        'prefix' => 'absen'
-    ], function() {
-        Route::get('tapIn', 'AbsenApiController@tapIn');
-    });
+    Route::post('absen', 'AbsenApiController@tapIn');
 });
