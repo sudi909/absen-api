@@ -17,8 +17,8 @@ class AbsenApiController extends Controller
             'id' => 'required|exists:internal_identifiers,identifier',
             'location' => 'required',
         ], [
-            'id.exists' => 'NIM / NIP anda tidak terdaftar',
-            'location.required' => 'Lokasi anda tidak diketahui',
+            'id.exists' => 'Oops, NIM / NIP anda tidak terdaftar',
+            'location.required' => 'Oops, Lokasi anda tidak diketahui',
         ]);
 
         if ($validator->fails()) {
@@ -31,7 +31,7 @@ class AbsenApiController extends Controller
         ];
 
         $date = Carbon::now()->format('Y-m-d');
-        $latestRecord = Attendance::where('identifier', 1903028)
+        $latestRecord = Attendance::where('identifier', $request->id)
             ->whereDate('created_at', $date)
             ->latest()
             ->first();
