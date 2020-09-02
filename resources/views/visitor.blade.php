@@ -42,6 +42,7 @@
                             <div >
                                 <div>
                                     <p id="time"></p>
+                                    @include('notification')
                                     <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan Data Anda
                                     </h3>
                                     <div class="form-group add_top_30">

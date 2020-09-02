@@ -50,7 +50,7 @@
                             <div>
                                 <div class="summary">
                                     <p id="time"></p>
-                                    <h3 class="main_question" id="result-checkin"></h3>
+                                    @include('notification')
                                     <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan Lokasi
                                         Perangkat</h3>
                                     <div class="form-group add_top_30">

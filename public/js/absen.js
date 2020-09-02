@@ -28,7 +28,7 @@ function toJSONString(form) {
 }
 
 function resetNotification() {
-    qs("#result-checkin").style.display = 'none';
-    qs("#result-checkin").innerHTML = '';
-    qs("#result-checkin").style.color = 'black';
+    qs("#result").style.display = 'none';
+    qs("#result").innerHTML = '';
+    qs("#result").style.color = 'black';
 }

@@ -4,14 +4,14 @@ $(window).on("load", function () {
     qs('#location').focus();
 
     // hide result
-    qs("#result-checkin").style.display = 'none';
+    qs("#result").style.display = 'none';
 
     $form.addEventListener('submit', function (e) {
         e.preventDefault();
         localStorage.setItem("location", qs('#location').value);
 
-        qs("#result-checkin").style.color = 'green';
-        qs("#result-checkin").style.display = '';
-        qs("#result-checkin").innerHTML = "Location Updated";
+        qs("#result").style.color = 'green';
+        qs("#result").style.display = '';
+        qs("#result").innerHTML = "Location Updated";
     });
 });

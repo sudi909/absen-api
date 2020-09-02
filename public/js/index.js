@@ -2,7 +2,7 @@ $(window).on("load", function () {
     qs('#location').value = localStorage.getItem("location");
 
     // hide result
-    qs("#result-checkin").style.display = 'none';
+    qs("#result").style.display = 'none';
 
     let $form = qs('#attForm');
     qs('#id').focus();
@@ -23,12 +23,12 @@ $(window).on("load", function () {
             .then(function (data) {
                 resetNotification();
                 if (data.errors) {
-                    qs("#result-checkin").style.color = 'red';
+                    qs("#result").style.color = 'red';
                 } else {
-                    qs("#result-checkin").style.color = 'green';
+                    qs("#result").style.color = 'green';
                 }
-                qs("#result-checkin").style.display = '';
-                qs("#result-checkin").innerHTML = data.message;
+                qs("#result").style.display = '';
+                qs("#result").innerHTML = data.message;
 
                 qs('#id').value = '';
                 qs('#id').focus();
