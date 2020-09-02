@@ -18,6 +18,6 @@ Route::get('/visitor', 'VisitorController@index');
 Route::group([
     'namespace' => 'Api\V1',
 ], function() {
-    Route::post('register', 'DeviceController@registerDevice');
     Route::post('absen', 'AbsenApiController@tapIn');
+    Route::post('visitor-att', 'VisitorAttendanceApiController@tapIn');
 });

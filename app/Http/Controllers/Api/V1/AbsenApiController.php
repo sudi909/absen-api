@@ -9,17 +9,30 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class AbsenApiController
+ *
+ * @package App\Http\Controllers\Api\V1
+ */
 class AbsenApiController extends Controller
 {
+    /**
+     * @param  Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function tapIn(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|exists:internal_identifiers,identifier',
-            'location' => 'required',
-        ], [
-            'id.exists' => 'NIM / NIP anda tidak terdaftar',
-            'location.required' => 'Lokasi anda tidak diketahui',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'id' => 'required|exists:internal_identifiers,identifier',
+                'location' => 'required',
+            ],
+            [
+                'id.exists' => 'Oops, NIM / NIP anda tidak terdaftar',
+                'location.required' => 'Oops, Lokasi anda tidak diketahui',
+            ]
+        );
 
         if ($validator->fails()) {
             return response()->json(['errors' => true, 'message' => $validator->errors()->first()], 401);
@@ -31,7 +44,7 @@ class AbsenApiController extends Controller
         ];
 
         $date = Carbon::now()->format('Y-m-d');
-        $latestRecord = Attendance::where('identifier', 1903028)
+        $latestRecord = Attendance::where('identifier', $request->id)
             ->whereDate('created_at', $date)
             ->latest()
             ->first();
@@ -49,20 +62,22 @@ class AbsenApiController extends Controller
         try {
             Attendance::create($att);
         } catch (\Exception $exception) {
-            return response()->json([
-                'errors' => true,
-                'message' => $exception->getMessage(),
-            ], 500);
+            return response()->json(
+                [
+                    'errors' => true,
+                    'message' => $exception->getMessage(),
+                ],
+                500
+            );
         }
 
         $attendee = Identifier::where('identifier', $request->id)->first();
         if ($att['type'] == "IN") {
-            $message = "Selamat Datang, " . $attendee->name;
+            $message = "Selamat Datang, ".$attendee->name;
         } else {
-            $message = "Sampai Jumpa Lagi, " . $attendee->name;
+            $message = "Sampai Jumpa Lagi, ".$attendee->name;
         }
 
         return response()->json(['errors' => false, 'message' => $message]);
-
     }
 }

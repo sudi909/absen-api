@@ -42,7 +42,7 @@
             <div class="col-lg-8">
                 <div id="wizard_container">
                     <!-- /top-wizard -->
-                    <form id="wrapped" method="post">
+                    <form id="settingForm" method="post">
                         <input id="website" name="website" type="text" value="">
                         <!-- Leave for security protection, read docs for details -->
                         <div id="middle-wizard">
@@ -50,11 +50,12 @@
                             <div>
                                 <div class="summary">
                                     <p id="time"></p>
+                                    @include('notification')
                                     <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan Lokasi
                                         Perangkat</h3>
                                     <div class="form-group add_top_30">
                                         <label for="name">Lokasi Perangkat</label>
-                                        <input type="text" name="name" id="name" class="form-control required">
+                                        <input type="text" name="location" id="location" class="form-control required">
                                     </div>
 
                                     <div class="text-center">
@@ -95,5 +96,7 @@
 </div>
 <!-- /cd-overlay-content -->
 @include('footer')
+
+<script src="js/setting.js"></script>
 </body>
 </html>
