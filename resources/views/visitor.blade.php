@@ -49,16 +49,16 @@
                                         <input type="text" name="name" id="name" class="form-control required">
                                     </div>
                                     <div class="form-group add_top_30">
-                                        <label for="name">No HP</label>
-                                        <input type="text" name="name" id="name" class="form-control required">
+                                        <label for="phone">No HP</label>
+                                        <input type="text" name="phone" id="phone" class="form-control required">
                                     </div>
                                     <div class="form-group add_top_30">
-                                        <label for="name">Alamat</label>
-                                        <input type="text" name="name" id="name" class="form-control">
+                                        <label for="address">Alamat</label>
+                                        <input type="text" name="address" id="address" class="form-control">
                                     </div>
                                     <div class="form-group add_top_30">
-                                        <label for="name">Keperluan</label>
-                                        <input type="text" name="name" id="name" class="form-control">
+                                        <label for="keperluan">Keperluan</label>
+                                        <input type="text" name="keperluan" id="keperluan" class="form-control">
                                     </div>
 
                                     <div class="text-center">
@@ -98,23 +98,6 @@
     <span></span>
 </div>
 <!-- /cd-overlay-content -->
-<!-- COMMON SCRIPTS -->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/common_scripts.min.js"></script>
-<script src="js/common_functions.js"></script>
-
-<!-- Wizard script-->
-<script type="text/javascript">
-    var timestamp = '<?php time();?>';
-
-    function updateTime() {
-        $('#time').html(Date('timestamp'));
-        timestamp++;
-    }
-
-    $(function () {
-        setInterval(updateTime, 1000);
-    });
-</script>
+@include('footer')
 </body>
 </html>

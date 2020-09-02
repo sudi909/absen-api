@@ -59,7 +59,7 @@ $(window).on("load", function () {
                 qs('#id').value = '';
                 qs('#id').focus();
 
-                setInterval(function () {
+                setTimeout(function () {
                     qs("#result-checkin").style.display = 'none';
                     qs("#result-checkin").innerHTML = '';
                     qs("#result-checkin").style.color = 'black';
