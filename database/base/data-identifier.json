@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "identifier": "1506114",
         "name": "M. Nur A Nasution",
@@ -6456,14 +6456,12 @@
     },
     {
         "identifier": "2019030079",
-        "name": "Rendi",
+        "name": "Rendi"
+    },
+    {
         "identifier": "2019030098",
         "name": "Stevina Christin Dwiyanti",
         "unit": "BTP"
-    },
-    "unit"
-    :
-    "BTP"
     },
     {
         "identifier": "2019030080",
@@ -6550,7 +6548,6 @@
         "name": "Dewi Kirana Larasasti",
         "unit": "BTP"
     },
-    {
     {
         "identifier": "2019030099",
         "name": "Fitry Ika Sari Nasution",
