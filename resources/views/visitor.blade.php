@@ -34,7 +34,7 @@
             <div class="col-lg-8">
                 <div id="wizard_container">
                     <!-- /top-wizard -->
-                    <form id="wrapped" method="post">
+                    <form id="visitorForm" method="post">
                         <input id="website" name="website" type="text" value="">
                         <!-- Leave for security protection, read docs for details -->
                         <div id="middle-wizard">
@@ -48,6 +48,7 @@
                                     <div class="form-group add_top_30">
                                         <label for="name">Nama</label>
                                         <input type="text" name="name" id="name" class="form-control required">
+                                        <input type="hidden" name="location" id="location">
                                     </div>
                                     <div class="form-group add_top_30">
                                         <label for="phone">No HP</label>
@@ -100,5 +101,7 @@
 </div>
 <!-- /cd-overlay-content -->
 @include('footer')
+
+<script src="js/visitor.js"></script>
 </body>
 </html>

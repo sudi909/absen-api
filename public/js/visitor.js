@@ -1,18 +1,27 @@
+function resetForm() {
+    qs('#name').value = '';
+    qs('#phone').value = '';
+    qs('#address').value = '';
+    qs('#keperluan').value = '';
+
+    qs('#name').focus();
+}
+
 $(window).on("load", function () {
     qs('#location').value = localStorage.getItem("location");
 
     // hide result
     qs("#result").style.display = 'none';
 
-    let $form = qs('#attForm');
-    qs('#id').focus();
+    let $form = qs('#visitorForm');
+    resetForm();
 
     $form.addEventListener('submit', function (e) {
         e.preventDefault();
         var dataToSend = toJSONString(this);
 
         let dataReceived = "";
-        fetch("/absen", {
+        fetch("/visitor-att", {
             method: "post",
             headers: {"Content-Type": "application/json"},
             body: dataToSend
@@ -26,9 +35,7 @@ $(window).on("load", function () {
                     qs("#result").style.color = 'red';
                 } else {
                     qs("#result").style.color = 'green';
-
-                    qs('#id').value = '';
-                    qs('#id').focus();
+                    resetForm();
                 }
                 qs("#result").style.display = '';
                 qs("#result").innerHTML = data.message;
