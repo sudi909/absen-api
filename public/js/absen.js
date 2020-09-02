@@ -25,6 +25,12 @@ function toJSONString(form) {
     return JSON.stringify(obj);
 }
 
+function resetNotification() {
+    qs("#result-checkin").style.display = 'none';
+    qs("#result-checkin").innerHTML = '';
+    qs("#result-checkin").style.color = 'black';
+}
+
 $(window).on("load", function () {
     qs('#location').value = localStorage.getItem("location");
 
@@ -48,6 +54,7 @@ $(window).on("load", function () {
                 return response.json();
             })
             .then(function (data) {
+                resetNotification();
                 if (data.errors) {
                     qs("#result-checkin").style.color = 'red';
                 } else {
@@ -58,12 +65,6 @@ $(window).on("load", function () {
 
                 qs('#id').value = '';
                 qs('#id').focus();
-
-                setTimeout(function () {
-                    qs("#result-checkin").style.display = 'none';
-                    qs("#result-checkin").innerHTML = '';
-                    qs("#result-checkin").style.color = 'black';
-                }, 5000);
             });
 
 
