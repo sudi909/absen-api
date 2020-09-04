@@ -86,6 +86,7 @@
         <p>© 2020 IT Yayasan Vitka</p>
         <ul>
             <li><a href="#" class="animated_link">Prevention Tips</a></li>
+            <li><a href="/settings" class="animated_link">Setting</a></li>
         </ul>
     </footer>
     <!-- end footer-->
