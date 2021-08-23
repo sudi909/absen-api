@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMembersTable extends Migration
+class AddColumnVaccineCountsOnInternalIdentifiersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid');
-            $table->string('name');
-            $table->char('nim', 15);
+        Schema::table('internal_identifiers', function (Blueprint $table) {
             $table->integer('vaccine_count');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +25,8 @@ class CreateMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::table('internal_identifiers', function (Blueprint $table) {
+            $table->dropColumn('vaccine_count');
+        });
     }
 }
