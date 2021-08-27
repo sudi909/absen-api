@@ -82,16 +82,16 @@ class AbsenApiController extends Controller
             );
         }
 
-        if ($ids->vaccine_count <= 0) {
-            return response()->json(['errors' => true, 'message' => 'Belum Divaksin'], 401);
-        }
-
         $attendee = Identifier::where('identifier', $request->id)->first();
         $name = $attendee->name;
         if ($att['type'] == "IN") {
             $message = "Selamat Datang, ";
         } else {
             $message = "Sampai Jumpa Lagi, ";
+        }
+
+        if ($ids->vaccine_count <= 0) {
+            return response()->json(['errors' => true, 'message' => ', Belum Divaksin', 'name' => $name], 401);
         }
 
         return response()->json(['errors' => false, 'message' => $message, 'name' => $name]);

@@ -43,10 +43,15 @@ $(window).on("load", function () {
                 if (data.errors) {
                     qs("#result").style.color = 'red';
                     qs("#result").style.display = '';
-                    qs("#result").innerHTML = "<i class='far fa-times-circle fa-sm' style='color: red; margin-right: 10px'></i>" + data.message;
+                    if (data.name !== undefined) {
+                        qs("#result").innerHTML = '<i class="far fa-times-circle fa-sm" style="color: red; margin-right: 10px"></i>'
+                        + '<span id="name" style="margin-bottom: 10px; font-weight: bolder">' + data.name + '</span>' + data.message;
+                    } else {
+                        qs("#result").innerHTML = '<i class="far fa-times-circle fa-sm" style="color: red; margin-right: 10px"></i>' + data.message;
+                    }
                 } else {
                     qs("#result").style.display = '';
-                    qs("#result").innerHTML = "<i class='far fa-check-circle fa-sm' style='color: lightgreen; margin-right: 10px'></i>" + data.message
+                    qs("#result").innerHTML = '<i class="far fa-check-circle fa-sm" style="color: lightgreen; margin-right: 10px"></i>' + data.message
                     + '<span id="name" style="margin-bottom: 10px; font-weight: bolder">' + data.name + '</span>';
                 }
                 qs('#id').value = '';
