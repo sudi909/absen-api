@@ -1,1 +1,3 @@
-<h3 class="main_question" id="result"></h3>
+<span>
+    <h5 id="result" style="margin-bottom: 10px; margin-top: 10px"></h5>
+</span>

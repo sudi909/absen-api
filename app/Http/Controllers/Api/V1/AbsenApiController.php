@@ -31,7 +31,11 @@ class AbsenApiController extends Controller
             [
                 'id.exists' => 'Oops, NIM / NIP anda tidak terdaftar',
                 'location.required' => 'Oops, Lokasi anda tidak diketahui',
-            ]
+            ],
+            [
+                'id.vaccine_count' => 'Oops, NIM / NIP anda tidak terdaftar',
+                'location.required' => 'Oops, Lokasi anda tidak diketahui',
+            ],
         );
 
         if ($validator->fails()) {
@@ -40,7 +44,8 @@ class AbsenApiController extends Controller
 
         $att = [
             'identifier' => $request->id,
-            'location' => $request->location,
+            'location_id' => $request->location,
+            'is_vaccine' => true,
         ];
 
         $date = Carbon::now()->format('Y-m-d');
@@ -59,6 +64,12 @@ class AbsenApiController extends Controller
             $att['type'] = 'IN';
         }
 
+        $ids = Identifier::where('identifier', $request->id)->first();
+
+        if ($ids->vaccine_count <= 0) {
+            $att['is_vaccine'] = false;
+        }
+
         try {
             Attendance::create($att);
         } catch (\Exception $exception) {
@@ -71,13 +82,18 @@ class AbsenApiController extends Controller
             );
         }
 
-        $attendee = Identifier::where('identifier', $request->id)->first();
-        if ($att['type'] == "IN") {
-            $message = "Selamat Datang, ".$attendee->name;
-        } else {
-            $message = "Sampai Jumpa Lagi, ".$attendee->name;
+        if ($ids->vaccine_count <= 0) {
+            return response()->json(['errors' => true, 'message' => 'Belum Divaksin'], 401);
         }
 
-        return response()->json(['errors' => false, 'message' => $message]);
+        $attendee = Identifier::where('identifier', $request->id)->first();
+        $name = $attendee->name;
+        if ($att['type'] == "IN") {
+            $message = "Selamat Datang, ";
+        } else {
+            $message = "Sampai Jumpa Lagi, ";
+        }
+
+        return response()->json(['errors' => false, 'message' => $message, 'name' => $name]);
     }
 }

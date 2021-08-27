@@ -4,87 +4,82 @@
 @include('header')
 
 <body>
-{{--<div id="preloader">--}}
-{{--    <div data-loader="circle-side"></div>--}}
-{{--</div><!-- /Preload -->--}}
+<div id="preloader">
+    <div data-loader="circle-side"></div>
+</div><!-- /Preload -->
 
-{{--<div id="loader_form">--}}
-{{--    <div data-loader="circle-side-2"></div>--}}
-{{--</div><!-- /loader_form -->--}}
+<div id="loader_form">
+    <div data-loader="circle-side-2"></div>
+</div><!-- /loader_form -->
 
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-3">
-                <img src="img/logoyv.png" alt="" width="57" height="55" class="d-none d-md-block"><img
-                    src="img/logoyv.png" alt="" width="50" height="45" class="d-block d-md-none">
+<!-- Bootstrap row -->
+<div id="wrapper" class="toggled">
+    <div class="row">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" class="sidebar-expanded">
+            <div class="icon-logo" style="margin-left: 65px; margin-bottom: 60px">
+                <img src="img/logoyv.png" alt="" width="100" height="98" class="d-none d-md-block">
             </div>
 
-        </div>
-    </div>
-    <!-- /container -->
-</header>
-<!-- /Header -->
-
-<div class="container">
-    <div id="form_container">
-        <div class="row no-gutters">
-            <div class="col-lg-4">
-                <div id="left_form">
-                    <figure><img src="img/logoyv.png" alt="" width="100" height="100"></figure>
-                    <h2>YAYASAN VITKA <span>Contact Tracing</span></h2>
-                    <p><i>“To ensure good health: eat lightly, breathe deeply, live moderately, cultivate cheerfulness, and
-                            maintain an interest in life.” -William Londen.</i></p>
-                    <a href="/visitor" class="btn_1 rounded yellow purchase" target="_parent">Input Visitor</a>
+            <ul class="list-group">
+                <div style="padding: 20px 20px 0px 20px">
+                    <li class="custom-list-active">
+                        <a href="/" style="color: white; font-size: 14px">
+                            <i class="fas fa-poll-h fa-lg" style="margin-right: 20px; vertical-align:middle"></i>Dashboard
+                        </a>
+                    </li>
                 </div>
-            </div>
-            <div class="col-lg-8">
-                <div id="wizard_container">
-                    <!-- /top-wizard -->
-                    <form id="attForm" method="post">
-                        <!-- Leave for security protection, read docs for details -->
-                        <div id="middle-wizard">
-
-                            <div>
-                                <div class="summary">
-                                    <p id="time"></p>
+                <div style="padding: 20px 20px 0px 20px">
+                    <li class="custom-list">
+                        <a href="/report" style="color: grey; font-size: 14px">
+                            <i class="fas fa-file-alt fa-lg" style="margin-right: 20px; vertical-align:middle"></i>Report
+                        </a>
+                    </li>
+                </div>
+                <div style="padding: 20px 20px 0px 20px">
+                    <li class="custom-list">
+                        <a href="/settings" style="color: grey; font-size: 14px">
+                            <i class="fas fa-cog fa-lg" style="margin-right: 20px; vertical-align:middle"></i>Setting
+                        </a>
+                    </li>
+                </div>
+            </ul><!-- List Group END-->
+        </div><!-- sidebar-container END -->
+        <!-- MAIN -->
+        <div id="wizard_container" class="toggled">
+            <span class="fas fa-bars" id="menu-toggle"></span>
+            <span class="head-title">
+                CONTACT TRACING
+            </span>
+            <input type="hidden" name="audioSuccess" id="audioSuccess" value="{{ URL::to('/') }}/audio/thank_you.mp3">
+            <input type="hidden" name="audioFailed" id="audioFailed" value="{{ URL::to('/') }}/audio/bell_notification.mp3">
+            <!-- /top-wizard -->
+            <div class="box-form">
+                <form id="attForm" method="post" class="custom-form">
+                    <div id="middle-wizard">
+                        <div class="vertical-center">
+                            <div class="container">
+                                <img src="img/hands-card.png" alt="" height="400" style="margin-top: -80px">
+                                <div class="summary" style="display: inline-block; text-align: left;">
+                                    <h2 class="main_question" style="font-weight: bold">Silahkan arahkan Barcode Kartu Identitas<br>
+                                        Mahasiswa / Karyawan anda ke Mesin Scanner.</h2>
                                     @include('notification')
-                                    <h3 class="main_question"><i class="arrow_right"></i>Silahkan Masukkan NIM / NIP Anda</h3>
                                     <div class="form-group add_top">
-                                        <label for="name">NIM / NIP</label>
-                                        <input type="text" name="id" id="id" class="form-control required">
+                                        <input type="text" name="id" id="id" class="custom-input" autofocus>
                                         <input type="hidden" name="location" id="location">
                                     </div>
-
-                                    <div class="text-center">
-                                        <button type="submit" name="process" class="submit">Submit</button>
-                                    </div>
+                                    <button type="submit" name="process" class="hide-btn"></button>
                                 </div>
                             </div>
-                            <!-- /step last-->
-
                         </div>
-                        <!-- /middle-wizard -->
-                    </form>
-                </div>
-                <!-- /Wizard container -->
+                    </div>
+                    <!-- /middle-wizard -->
+                </form>
             </div>
-        </div><!-- /Row -->
-    </div><!-- /Form_container -->
+            <!-- Main Col END -->
+        </div>
+    </div><!-- body-row END -->
 </div>
-<!-- /container -->
-
-<div class="container">
-    <footer id="home" class="clearfix">
-        <p>© 2020 IT Yayasan Vitka</p>
-        <ul>
-            <li><a href="#" class="animated_link">Prevention Tips</a></li>
-            <li><a href="/settings" class="animated_link">Setting</a></li>
-        </ul>
-    </footer>
-    <!-- end footer-->
-</div>
-<!-- /container -->
 
 <div class="cd-overlay-nav">
     <span></span>
@@ -97,6 +92,7 @@
 
 @include('footer')
 
-<script src="js/index.js"></script>
+<script src="js/index.js">
+</script>
 </body>
 </html>
