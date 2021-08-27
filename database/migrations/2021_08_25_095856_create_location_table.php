@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCountColumnOnInternalIdentifiersTable extends Migration
+class CreateLocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddCountColumnOnInternalIdentifiersTable extends Migration
      */
     public function up()
     {
-        Schema::table('internal_identifiers', function (Blueprint $table) {
-            $table->integer('vaccine_count')->after('unit');
+        Schema::create('locations', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddCountColumnOnInternalIdentifiersTable extends Migration
      */
     public function down()
     {
-        Schema::table('internal_identifiers', function (Blueprint $table) {
-            $table->dropColumn('vaccine_count');
-        });
+        Schema::dropIfExists('locations');
     }
 }
