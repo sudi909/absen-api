@@ -3,6 +3,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
+
 /**
  * Class SettingController
  *
@@ -17,6 +19,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('setting');
+        $locations = Location::all();
+
+        return view('setting')->with(compact('locations'));
     }
 }

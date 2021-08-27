@@ -6,6 +6,12 @@ $(window).on("load", function () {
     // hide result
     qs("#result").style.display = 'none';
 
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#wizard_container").toggleClass("toggled");
+    });
+
     $form.addEventListener('submit', function (e) {
         e.preventDefault();
         localStorage.setItem("location", qs('#location').value);
