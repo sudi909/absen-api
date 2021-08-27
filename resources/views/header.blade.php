@@ -11,7 +11,11 @@
     <link rel="shortcut icon" href="img/logoyv.png" type="image/x-icon">
 
     <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <!-- FONT AWESOME -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet">
 
     <!-- BASE CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
