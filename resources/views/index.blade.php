@@ -59,10 +59,10 @@
                     <div id="middle-wizard">
                         <div class="vertical-center">
                             <div class="container">
-                                <img src="img/hands-card.png" alt="" height="400" style="margin-top: -80px">
+                                <img src="img/hands-card.png" alt="" height="350" style="margin-top: -80px">
                                 <div class="summary" style="display: inline-block; text-align: left;">
-                                    <h2 class="main_question" style="font-weight: bold">Silahkan arahkan Barcode Kartu Identitas<br>
-                                        Mahasiswa / Karyawan anda ke Mesin Scanner.</h2>
+                                    <h3 class="main_question" style="font-weight: bold">Silahkan arahkan Barcode Kartu Identitas<br>
+                                        Mahasiswa / Karyawan anda ke Mesin Scanner.</h3>
                                     @include('notification')
                                     <div class="form-group add_top">
                                         <input type="text" name="id" id="id" class="custom-input" autofocus>

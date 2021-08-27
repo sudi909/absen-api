@@ -50,11 +50,11 @@
                     <div id="middle-wizard">
                         <div class="vertical-center">
                             <div class="container">
-                                <img src="img/hands-report.png" alt="" height="400" style="margin-top: -70px">
+                                <img src="img/hands-report.png" alt="" height="350" style="margin-top: -70px">
                                 <div class="summary" style="display: inline-block">
-                                    <h2 class="main_question" style="font-weight: bold">Silahkan memilih tanggal dan lokasi</h2>
+                                    <h3 class="main_question" style="font-weight: bold">Silahkan memilih tanggal dan lokasi</h3>
                                     <input type="text" name="daterange" class="custom-input" required/><br>
-                                    <select name="location" id="location" class="custom-selection" style="font-size: 18px" required>
+                                    <select name="location" id="location" class="custom-selection" style="font-size: 14px" required>
                                         @foreach($locations as $location)
                                             <option class="custom-option" value="{{ $location->id }}">{{ $location->name }}</option>
                                         @endforeach

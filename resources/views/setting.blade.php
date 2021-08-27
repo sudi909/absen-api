@@ -51,9 +51,9 @@
                         <div class="vertical-center">
                             <div class="container">
                                 <div class="summary">
-                                    <h2 class="main_question" style="font-weight: bold">Silahkan Masukkan Lokasi Perangkat</h2>
+                                    <h3 class="main_question" style="font-weight: bold">Silahkan Masukkan Lokasi Perangkat</h3>
                                     @include('notification')
-                                    <select name="location" id="location" class="custom-selection" style="margin-top: 25px; font-size: 18px" required>
+                                    <select name="location" id="location" class="custom-selection" style="margin-top: 25px; font-size: 14px" required>
                                         @foreach($locations as $location)
                                             <option class="custom-option" value="{{ $location->id }}" >{{ $location->name }}</option>
                                         @endforeach

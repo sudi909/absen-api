@@ -1993,18 +1993,19 @@ ul li {
 .custom-input {
     margin-bottom: 15px;
     margin-top: 25px;
-    height: 60px;
-    width: 500px;
+    height: 40px;
+    width: 400px;
     border: none;
     outline: none;
     border-radius: 10px;
     background-color: #E8F3FF;
+    font-size: 14px;
 }
 
 .custom-selection {
     margin-bottom: 15px;
     height: 60px;
-    width: 500px;
+    width: 400px;
     border: none;
     outline: none;
     border-radius: 10px;
@@ -2012,7 +2013,7 @@ ul li {
 }
 
 .custom-option {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .box-form {
