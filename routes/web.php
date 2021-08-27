@@ -14,6 +14,8 @@
 Route::get('/', 'DashboardController@index');
 Route::get('/settings', 'SettingController@index');
 Route::get('/visitor', 'VisitorController@index');
+Route::get('/report', 'ReportController@index');
+Route::post('/report', 'ReportController@report');
 
 Route::group([
     'namespace' => 'Api\V1',
