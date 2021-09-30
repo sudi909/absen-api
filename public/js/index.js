@@ -44,15 +44,16 @@ $(window).on("load", function () {
                     qs("#result").style.color = 'red';
                     qs("#result").style.display = '';
                     if (data.name !== undefined) {
-                        qs("#result").innerHTML = '<i class="far fa-times-circle fa-sm" style="color: red; margin-right: 10px"></i>'
-                        + '<span id="name" style="margin-bottom: 10px; font-weight: bolder">' + data.name + '</span>' + data.message;
+                        qs("#result").innerHTML = '<h3><i class="far fa-times-circle fa-sm" style="color: red; margin-right: 10px"></i>'
+                        + '<span id="name" style="margin-bottom: 10px; font-weight: bolder">' + data.name + '</span>' + data.message + '</h3>';
                     } else {
-                        qs("#result").innerHTML = '<i class="far fa-times-circle fa-sm" style="color: red; margin-right: 10px"></i>' + data.message;
+                        qs("#result").innerHTML = '<h3><i class="far fa-times-circle fa-sm" style="color: red; margin-right: 10px"></i>' + data.message + '</h3>';
                     }
                 } else {
                     qs("#result").style.display = '';
-                    qs("#result").innerHTML = '<i class="far fa-check-circle fa-sm" style="color: lightgreen; margin-right: 10px"></i>' + data.message
-                    + '<span id="name" style="margin-bottom: 10px; font-weight: bolder">' + data.name + '</span>';
+                    qs("#result").innerHTML = '<h3><i class="far fa-check-circle fa-sm" style="color: lightgreen; margin-right: 10px"></i>' + data.message
+                    + '<span id="name" style="margin-bottom: 10px; font-weight: bolder">' + data.name + '</span>' +
+                        '<p id="vaccine" style="color: lightgreen; margin-left: 10px"> (Sudah Divaksin)</p></h3>';
                 }
                 qs('#id').value = '';
                 qs('#id').focus();
